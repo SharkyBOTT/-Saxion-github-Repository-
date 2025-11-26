@@ -4,18 +4,18 @@
     <Declaration><![CDATA[PROGRAM MAIN_Burner
 VAR
 	State: INT;
-	FuncDelay : Delay;
+	FuncDelay: Delay;	
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL_Kitchen.System_Start = 0 THEN
- 	FuncDelay;
+ 	FuncDelay();
 ELSE	
 		CASE State OF
 		0: 
 		IF GVL_kitchen.Food_Spiced >0 THEN
 			GVL_kitchen.Food_Spiced := GVL_kitchen.Food_Spiced-1;
-			FuncDelay;
+			FuncDelay();
 			GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked +1;
 			END_IF;
 		END_CASE 

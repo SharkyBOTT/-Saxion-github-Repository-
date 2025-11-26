@@ -5,33 +5,37 @@
 VAR
 	State: INT;
 	Start: INT;
-	FuncDelay : Delay;	
+	FuncDelay: Delay;	
 END_VAR
 	]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL_Kitchen.System_Start = 0 THEN
- 	FuncDelay;
+ 	FuncDelay();
 	ELSE	
 		CASE State OF
 		0: 
 			IF GVL_kitchen.Food_Cut < 2 THEN
-				FuncDelay;
+				FuncDelay();
 				GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut +1;
 				ELSE 
 					state := 1;
 			END_IF;
 		1:
 			IF GVL_kitchen.Food_Spiced < 2 THEN
+				IF GVL_kitchen.Food_Cut > 0 THEN
 				GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut -1;
-				FuncDelay;
+				FuncDelay();
 				GVL_Kitchen.Food_Spiced := GVL_Kitchen.Food_Spiced +1;
-				ELSE 
-					state := 2;
+				ELSE
+				State := 0;
+				END_IF
+			ELSE 
+				state := 2;
 			END_IF;
 		2:
 			IF GVL_kitchen.Food_Cooked > 0 THEN
 			GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked -1;
-			FuncDelay;
+			FuncDelay();
 			GVL_Kitchen.Food_Plated := GVL_Kitchen.Food_Plated +1;
 			ELSE 
 				state := 0;
@@ -51,9 +55,12 @@ END_IF
       <LineId Id="39" Count="2" />
       <LineId Id="37" Count="0" />
       <LineId Id="33" Count="0" />
-      <LineId Id="42" Count="1" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="43" Count="0" />
       <LineId Id="48" Count="0" />
       <LineId Id="47" Count="0" />
+      <LineId Id="67" Count="2" />
       <LineId Id="45" Count="1" />
       <LineId Id="30" Count="0" />
       <LineId Id="57" Count="0" />

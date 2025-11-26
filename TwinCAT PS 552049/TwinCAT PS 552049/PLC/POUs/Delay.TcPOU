@@ -7,24 +7,21 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	
-	delay : TON;
-    Count : INT := 0;
-
-	
+	Delay : TON;
+	IN: BOOL := TRUE;
+	PT: TIME := T#5S;
+		Q: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[Delay(IN:=TRUE, PT:=T#5S);
+      <ST><![CDATA[Delay(IN:=TRUE, PT:=T#5000S);
 IF NOT(Delay.Q) THEN
    RETURN;
 END_IF
-Delay(IN:=FALSE);
-]]></ST>
+Delay(IN:=FALSE);]]></ST>
     </Implementation>
     <LineIds Name="Delay">
-      <LineId Id="43" Count="3" />
-      <LineId Id="39" Count="0" />
+      <LineId Id="73" Count="3" />
       <LineId Id="47" Count="0" />
     </LineIds>
   </POU>
