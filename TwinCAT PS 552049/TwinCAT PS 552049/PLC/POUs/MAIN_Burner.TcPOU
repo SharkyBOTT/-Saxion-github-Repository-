@@ -1,13 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{f5fc2f05-488a-44f2-8202-36e07a31bae0}">
-    <Declaration><![CDATA[PROGRAM MAIN
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="MAIN_Burner" Id="{f5fc2f05-488a-44f2-8202-36e07a31bae0}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN_Burner
 VAR
+	State: INT;
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF GVL_Kitchen.System_Start = FALSE THEN
+ 	
+	ELSE
+	
+	1:
+		CASE State OF
+		0: 
+		IF GVL_kitchen.Food_Spiced >0 THEN
+			GVL_kitchen.Food_Spiced := GVL_kitchen.Food_Spiced-1;
+			Delay;
+			GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked +1;
+			ELSE 
+				state := 1;
+		END_IF;
+		END_CASE 	
+END_CASE
+	]]></ST>
     </Implementation>
+    <LineIds Name="MAIN_Burner">
+      <LineId Id="9" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="40" Count="8" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="15" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <POU Name="Delay" Id="{f44b84ec-03f4-489c-8e59-7254caf2a04b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Delay
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	
+	delay : TON;
+    Count : INT := 0;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[delay(IN := TRUE, PT:= T#5S);
+    IF NOT (delay.Q) THEN
+        RETURN;
+    END_IF;
+
+delay(IN := FALSE);]]></ST>
+    </Implementation>
+    <LineIds Name="Delay">
+      <LineId Id="11" Count="4" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
