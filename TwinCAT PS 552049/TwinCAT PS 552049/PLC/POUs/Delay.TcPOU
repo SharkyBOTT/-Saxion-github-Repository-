@@ -10,22 +10,22 @@ VAR
 	
 	delay : TON;
     Count : INT := 0;
+
 	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[delay(IN := TRUE, PT:= T#5S);
-    IF NOT (delay.Q) THEN
-        RETURN;
-    END_IF;
-
-delay(IN := FALSE);
+      <ST><![CDATA[Delay(IN:=TRUE, PT:=T#5S);
+IF NOT(Delay.Q) THEN
+   RETURN;
+END_IF
+Delay(IN:=FALSE);
 ]]></ST>
     </Implementation>
     <LineIds Name="Delay">
-      <LineId Id="34" Count="4" />
-      <LineId Id="32" Count="0" />
+      <LineId Id="43" Count="3" />
       <LineId Id="39" Count="0" />
+      <LineId Id="47" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

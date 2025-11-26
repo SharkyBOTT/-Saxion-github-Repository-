@@ -13,23 +13,26 @@
 		</System>
 		<Plc>
 			<Project GUID="{AC1ED987-0352-4AC0-8937-94EA95967AA6}" Name="PLC" PrjFilePath="PLC\PLC.plcproj" TmcFilePath="PLC\PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{0A4DD974-EAD9-3428-1776-4F9C7D37B252}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{D7A06607-7A87-915F-9CFD-E32C8A33CEC7}">
 					<Name>PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>
 						<Context>
 							<Id>0</Id>
+							<Name>PlcTask</Name>
+						</Context>
+						<Context>
+							<Id>1</Id>
 							<Name>Task_Cutter</Name>
 							<ManualConfig>
-								<OTCID>#x02010030</OTCID>
+								<OTCID>#x02010040</OTCID>
 							</ManualConfig>
-							<Priority>1</Priority>
+							<Priority>21</Priority>
 							<CycleTime>10000000</CycleTime>
-							<DependOn>FixedConfig</DependOn>
 						</Context>
 					</Contexts>
 					<TaskPouOids>
-						<TaskPouOid Prio="1" OTCID="#x08502001"/>
+						<TaskPouOid Prio="21" OTCID="#x08502001"/>
 					</TaskPouOids>
 				</Instance>
 			</Project>
