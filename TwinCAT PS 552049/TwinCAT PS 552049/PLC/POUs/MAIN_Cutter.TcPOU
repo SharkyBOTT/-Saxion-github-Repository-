@@ -5,7 +5,7 @@
 VAR
 	State: INT;
 	Start: INT;
-		
+	FuncDelay : Delay;	
 END_VAR
 	]]></Declaration>
     <Implementation>
@@ -18,7 +18,7 @@ CASE Start OF
 	CASE State OF
 	0: 
 	IF GVL_kitchen.Food_Cut < 2 THEN
-		Delay;
+		FuncDelay;
 		GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut +1
 		ELSE 
 			state := 1;
@@ -26,7 +26,7 @@ CASE Start OF
 	1:
 	IF GVL_kitchen.Food_Spiced < 2 THEN
 		GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut -1
-		Delay;
+		FuncDelay;
 		GVL_Kitchen.Food_Spiced := GVL_Kitchen.Food_Spiced +1
 		ELSE 
 			state := 2;
@@ -34,7 +34,7 @@ CASE Start OF
 	2:
 		IF GVL_kitchen.Food_Cooked > 0 THEN
 		GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked -1
-		Delay;
+		FuncDelay;
 		GVL_Kitchen.Food_Plated := GVL_Kitchen.Food_Plated +1
 		ELSE 
 			state := 0;

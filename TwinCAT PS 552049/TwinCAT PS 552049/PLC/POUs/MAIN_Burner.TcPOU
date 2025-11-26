@@ -4,25 +4,23 @@
     <Declaration><![CDATA[PROGRAM MAIN_Burner
 VAR
 	State: INT;
+	FuncDelay : Delay;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF GVL_Kitchen.System_Start = FALSE THEN
- 	
-	ELSE
-	
-	1:
+      <ST><![CDATA[IF GVL_Kitchen.System_Start = 1 THEN
+ 	FuncDelay;
+ELSE	
 		CASE State OF
 		0: 
 		IF GVL_kitchen.Food_Spiced >0 THEN
 			GVL_kitchen.Food_Spiced := GVL_kitchen.Food_Spiced-1;
-			Delay;
+			FuncDelay;
 			GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked +1;
-			ELSE 
-				state := 1;
-		END_IF;
-		END_CASE 	
-END_CASE
+			END_IF;
+		END_CASE 
+END_IF	
+
 	]]></ST>
     </Implementation>
     <LineIds Name="MAIN_Burner">
@@ -30,9 +28,9 @@ END_CASE
       <LineId Id="2" Count="0" />
       <LineId Id="49" Count="0" />
       <LineId Id="36" Count="0" />
-      <LineId Id="26" Count="0" />
-      <LineId Id="40" Count="8" />
+      <LineId Id="41" Count="5" />
       <LineId Id="39" Count="0" />
+      <LineId Id="50" Count="0" />
       <LineId Id="25" Count="0" />
       <LineId Id="15" Count="0" />
     </LineIds>

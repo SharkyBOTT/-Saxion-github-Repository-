@@ -10,6 +10,7 @@ VAR
 	
 	delay : TON;
     Count : INT := 0;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -18,11 +19,13 @@ END_VAR
         RETURN;
     END_IF;
 
-delay(IN := FALSE);]]></ST>
+delay(IN := FALSE);
+]]></ST>
     </Implementation>
     <LineIds Name="Delay">
-      <LineId Id="11" Count="4" />
-      <LineId Id="9" Count="0" />
+      <LineId Id="34" Count="4" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="39" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
