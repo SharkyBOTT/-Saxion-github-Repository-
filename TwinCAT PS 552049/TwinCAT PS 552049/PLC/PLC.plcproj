@@ -16,6 +16,7 @@
     <Implicit_KindOfTask>{fca1d780-b81c-44a0-96a0-89308f6ea75c}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{e6eb4be3-87ba-4d33-ab15-81fd68dbaa34}</Implicit_Jitter_Distribution>
     <LibraryReferences>{47e41f5c-369f-4781-bdbd-e98af28a5523}</LibraryReferences>
+    <Released>false</Released>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GVLs\GVL_Kitchen.TcGVL">
@@ -32,6 +33,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN_Cutter.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task_Cutter.TcTTO">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

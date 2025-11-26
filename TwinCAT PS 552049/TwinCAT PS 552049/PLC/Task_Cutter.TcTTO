@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.15">
+  <Task Name="Task_Cutter" Id="{ecbe194d-6655-4ea1-bfbd-2a23b2151022}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>21</Priority>
+    <PouCall>
+      <Name>MAIN_Cutter</Name>
+    </PouCall>
+    <TaskFBGuid>{7589c25d-9def-4abb-a68b-702c5cbaa659}</TaskFBGuid>
+    <Fb_init>{d8d82fac-12c1-4f11-8c9a-821984d422f6}</Fb_init>
+    <Fb_exit>{1df1b8c9-ca56-474d-b65c-01cffaa638d5}</Fb_exit>
+    <CycleUpdate>{8516e3f5-60a8-43d3-bed4-ffeb3ef64ba1}</CycleUpdate>
+    <PostCycleUpdate>{19814c3f-4654-401b-906b-f1a18556ee69}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

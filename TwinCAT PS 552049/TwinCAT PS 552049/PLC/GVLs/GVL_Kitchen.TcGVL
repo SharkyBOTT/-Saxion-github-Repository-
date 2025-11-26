@@ -4,7 +4,7 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	
-	System_Start : Int := 0;
+	System_Start : Int := 1;
 	Food_Cut	 : INT  := 0;
 	Food_Spiced  : INT  := 0;
 	Food_Cooked  : INT  := 0;
