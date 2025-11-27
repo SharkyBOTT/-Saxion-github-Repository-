@@ -32,6 +32,9 @@
     <Compile Include="POUs\MAIN_Cutter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\Delay.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Task_Cutter.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -39,7 +42,6 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
-    <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>

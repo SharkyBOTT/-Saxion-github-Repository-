@@ -8,21 +8,18 @@ VAR
 	IN: BOOL := TRUE;
 	PT: TIME := T#5S;
 	Q: INT;
-	FuncDelay : Delay;
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL_Kitchen.System_Start = 0 THEN
- 	FuncDelay(IN:=TRUE, PT:=T#5S);
+ 	 	Delay();
 ELSE	
 		CASE State OF
 		0: 
 		IF GVL_kitchen.Food_Spiced >0 THEN
 			
-			Delay(IN:=TRUE, PT:=T#5S);
-			IF NOT(Delay.Q) THEN
-			   RETURN;
-			END_IF
+			 	Delay();
 			Delay(IN:=FALSE);
 			GVL_kitchen.Food_Spiced := GVL_kitchen.Food_Spiced-1;
 			GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked +1;
@@ -31,11 +28,7 @@ ELSE
 			
 		1: 
 		IF GVL_kitchen.Food_cooked > 0 THEN
-				Delay(IN:=TRUE, PT:=T#5S);
-				IF NOT(Delay.Q) THEN
-				   RETURN;
-				END_IF
-				Delay(IN:=FALSE);
+				 	Delay();
 			GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked -1;
 			GVL_Kitchen.Food_Plated := GVL_Kitchen.Food_Plated +1;
 			ELSE 
@@ -52,13 +45,14 @@ END_IF
       <LineId Id="49" Count="0" />
       <LineId Id="36" Count="0" />
       <LineId Id="41" Count="2" />
-      <LineId Id="68" Count="3" />
+      <LineId Id="117" Count="0" />
       <LineId Id="57" Count="1" />
       <LineId Id="45" Count="0" />
       <LineId Id="72" Count="0" />
       <LineId Id="46" Count="0" />
       <LineId Id="73" Count="1" />
-      <LineId Id="76" Count="9" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="81" Count="4" />
       <LineId Id="75" Count="0" />
       <LineId Id="39" Count="0" />
       <LineId Id="50" Count="0" />

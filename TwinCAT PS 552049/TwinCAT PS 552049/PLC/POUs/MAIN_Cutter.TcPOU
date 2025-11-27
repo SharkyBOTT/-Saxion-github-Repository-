@@ -5,7 +5,7 @@
 VAR
 	State: INT;
 	Start: INT;
-	FuncDelay : Delay;
+	
 	Delay : TON;
 	IN: BOOL := TRUE;
 	PT: TIME := T#5S;
@@ -14,36 +14,24 @@ END_VAR
 	]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL_Kitchen.System_Start = 0 THEN
- 	FuncDelay(IN:=TRUE, PT:=T#5S);
+ 	Delay();
 	ELSE	
 		CASE State OF
 		0: 
 			IF GVL_kitchen.Food_Cut < 2 THEN
 				
-				Delay(IN:=TRUE, PT:=T#5S);
-				IF NOT(Delay.Q) THEN
-				   RETURN;
-				END_IF
-				Delay(IN:=FALSE);
+				Delay();
 				
-GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut +1;
+				GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut +1;
 				ELSE 
 					state := 1;
 			END_IF;
 		1:
 			IF GVL_kitchen.Food_Spiced < 2 THEN
-				IF GVL_kitchen.Food_Cut > 0 THEN
-				Delay(IN:=TRUE, PT:=T#5S);
-				IF NOT(Delay.Q) THEN
-				   RETURN;
-				END_IF
-				Delay(IN:=FALSE);
+			 	Delay();
 				GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut -1;
 				GVL_Kitchen.Food_Spiced := GVL_Kitchen.Food_Spiced +1;
 				ELSE
-				State := 0;
-				END_IF
-			ELSE 
 				state := 0;
 			END_IF;
 		
@@ -54,14 +42,13 @@ END_IF
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN_Cutter">
-      <LineId Id="58" Count="1" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="59" Count="0" />
       <LineId Id="6" Count="0" />
       <LineId Id="21" Count="0" />
       <LineId Id="26" Count="0" />
       <LineId Id="28" Count="0" />
       <LineId Id="80" Count="0" />
-      <LineId Id="85" Count="0" />
-      <LineId Id="81" Count="2" />
       <LineId Id="29" Count="0" />
       <LineId Id="39" Count="0" />
       <LineId Id="84" Count="0" />
@@ -69,14 +56,11 @@ END_IF
       <LineId Id="37" Count="0" />
       <LineId Id="33" Count="0" />
       <LineId Id="42" Count="0" />
-      <LineId Id="66" Count="0" />
-      <LineId Id="43" Count="0" />
-      <LineId Id="87" Count="2" />
       <LineId Id="48" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="47" Count="0" />
-      <LineId Id="67" Count="2" />
-      <LineId Id="45" Count="1" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="45" Count="0" />
       <LineId Id="30" Count="0" />
       <LineId Id="49" Count="1" />
       <LineId Id="27" Count="0" />
