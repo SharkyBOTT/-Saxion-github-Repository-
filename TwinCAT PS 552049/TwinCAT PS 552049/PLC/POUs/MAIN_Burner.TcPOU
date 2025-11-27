@@ -3,24 +3,34 @@
   <POU Name="MAIN_Burner" Id="{f5fc2f05-488a-44f2-8202-36e07a31bae0}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN_Burner
 VAR
-	State: INT;
-	Delay : TON;
-	IN: BOOL := TRUE;
-	PT: TIME := T#5S;
+
+	Delay: TON;
+	IN: BOOL;
+	PT: TIME;
 	Q: INT;
-	
+	State : Int;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL_Kitchen.System_Start = 0 THEN
- 	 	Delay();
+ 	 	
+					Delay(IN:=TRUE, PT:=T#1S);
+					IF NOT(Delay.Q) THEN
+					   RETURN;
+					END_IF
+					Delay(IN:=FALSE);
+					
 ELSE	
 		CASE State OF
 		0: 
 		IF GVL_kitchen.Food_Spiced >0 THEN
 			
-			 	Delay();
-			Delay(IN:=FALSE);
+			 		Delay(IN:=TRUE, PT:=T#7S);
+					IF NOT(Delay.Q) THEN
+					   RETURN;
+					END_IF
+					Delay(IN:=FALSE);
+			
 			GVL_kitchen.Food_Spiced := GVL_kitchen.Food_Spiced-1;
 			GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked +1;
 			State := 1;
@@ -28,7 +38,13 @@ ELSE
 			
 		1: 
 		IF GVL_kitchen.Food_cooked > 0 THEN
-				 	Delay();
+				 	
+					Delay(IN:=TRUE, PT:=T#3S);
+					IF NOT(Delay.Q) THEN
+					   RETURN;
+					END_IF
+					Delay(IN:=FALSE);
+					
 			GVL_Kitchen.Food_Cooked := GVL_Kitchen.Food_Cooked -1;
 			GVL_Kitchen.Food_Plated := GVL_Kitchen.Food_Plated +1;
 			ELSE 
@@ -41,18 +57,26 @@ END_IF
     </Implementation>
     <LineIds Name="MAIN_Burner">
       <LineId Id="9" Count="0" />
+      <LineId Id="128" Count="4" />
       <LineId Id="2" Count="0" />
+      <LineId Id="134" Count="0" />
       <LineId Id="49" Count="0" />
       <LineId Id="36" Count="0" />
       <LineId Id="41" Count="2" />
+      <LineId Id="138" Count="3" />
       <LineId Id="117" Count="0" />
       <LineId Id="57" Count="1" />
       <LineId Id="45" Count="0" />
       <LineId Id="72" Count="0" />
       <LineId Id="46" Count="0" />
       <LineId Id="73" Count="1" />
-      <LineId Id="76" Count="0" />
-      <LineId Id="81" Count="4" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="143" Count="2" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="149" Count="0" />
+      <LineId Id="82" Count="3" />
       <LineId Id="75" Count="0" />
       <LineId Id="39" Count="0" />
       <LineId Id="50" Count="0" />

@@ -32,9 +32,6 @@
     <Compile Include="POUs\MAIN_Cutter.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\Delay.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Task_Cutter.TcTTO">
       <SubType>Code</SubType>
     </Compile>
@@ -62,6 +59,11 @@
     <None Include="PLC.tmc">
       <SubType>Content</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="Tc2_Standard">
+      <Resolution>Tc2_Standard, 3.4.5.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

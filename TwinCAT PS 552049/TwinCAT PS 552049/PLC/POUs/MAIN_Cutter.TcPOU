@@ -3,24 +3,31 @@
   <POU Name="MAIN_Cutter" Id="{f1df099b-19f3-47d0-858e-fbde7c1af039}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN_Cutter
 VAR
-	State: INT;
-	Start: INT;
-	
-	Delay : TON;
-	IN: BOOL := TRUE;
-	PT: TIME := T#5S;
-	Q: INT;	
+
+	Delay: TON;
+	IN: BOOL;
+	PT: TIME;
+	Q: INT;
+	State : INT;
 END_VAR
 	]]></Declaration>
     <Implementation>
       <ST><![CDATA[IF GVL_Kitchen.System_Start = 0 THEN
- 	Delay();
+ 		Delay(IN:=TRUE, PT:=T#1S);
+		IF NOT(Delay.Q) THEN
+		   RETURN;
+		END_IF
+		Delay(IN:=FALSE);
 	ELSE	
 		CASE State OF
 		0: 
 			IF GVL_kitchen.Food_Cut < 2 THEN
 				
-				Delay();
+					Delay(IN:=TRUE, PT:=T#5S);
+					IF NOT(Delay.Q) THEN
+					   RETURN;
+					END_IF
+					Delay(IN:=FALSE);
 				
 				GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut +1;
 				ELSE 
@@ -28,7 +35,13 @@ END_VAR
 			END_IF;
 		1:
 			IF GVL_kitchen.Food_Spiced < 2 THEN
-			 	Delay();
+			 		
+					Delay(IN:=TRUE, PT:=T#3S);
+					IF NOT(Delay.Q) THEN
+					   RETURN;
+					END_IF
+					Delay(IN:=FALSE);
+					
 				GVL_Kitchen.Food_Cut := GVL_Kitchen.Food_Cut -1;
 				GVL_Kitchen.Food_Spiced := GVL_Kitchen.Food_Spiced +1;
 				ELSE
@@ -43,12 +56,13 @@ END_IF
     </Implementation>
     <LineIds Name="MAIN_Cutter">
       <LineId Id="116" Count="0" />
-      <LineId Id="59" Count="0" />
+      <LineId Id="141" Count="4" />
       <LineId Id="6" Count="0" />
       <LineId Id="21" Count="0" />
       <LineId Id="26" Count="0" />
       <LineId Id="28" Count="0" />
       <LineId Id="80" Count="0" />
+      <LineId Id="146" Count="3" />
       <LineId Id="29" Count="0" />
       <LineId Id="39" Count="0" />
       <LineId Id="84" Count="0" />
@@ -56,7 +70,9 @@ END_IF
       <LineId Id="37" Count="0" />
       <LineId Id="33" Count="0" />
       <LineId Id="42" Count="0" />
+      <LineId Id="150" Count="4" />
       <LineId Id="48" Count="0" />
+      <LineId Id="155" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="47" Count="0" />
       <LineId Id="67" Count="0" />
