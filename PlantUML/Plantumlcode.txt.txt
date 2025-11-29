@@ -1,0 +1,43 @@
+@startuml
+!theme crt-green
+actor System as SYS
+
+participant "MAIN_Cutter" as CUTTER
+database "GVL_Kitchen" as GVL
+participant "MAIN_Burner" as BURNER
+
+' -----------------------------
+' System Start
+' -----------------------------
+SYS -> GVL : Write System_Start = 1
+
+
+' -----------------------------
+' Cutter Phase (only GVL access)
+' -----------------------------
+CUTTER <- GVL : Read System_Start
+
+' Food cutting loop simplified:
+CUTTER <- GVL : Read Food_Cut (<2)
+CUTTER -> GVL : Write Food_Cut = Food_Cut + 1
+CUTTER <- GVL : Read Food_Spiced (<2)
+CUTTER -> GVL : Write Food_Cut = Food_Cut - 1
+CUTTER -> GVL : Write Food_Spiced = Food_Spiced + 1
+
+
+
+
+' -----------------------------
+' Burner Phase (only GVL access)
+' -----------------------------
+BURNER <- GVL : Read System_Start
+
+' Food cooking loop simplified:
+BURNER <- GVL : Read Food_Spiced (>0)
+BURNER -> GVL : Write Food_Spiced = Food_Spiced - 1
+BURNER -> GVL : Write Food_Cooked = Food_Cooked + 1
+
+BURNER <- GVL : Read Food_Cooked (>0)
+BURNER -> GVL : Write Food_Cooked = Food_Cooked - 1
+BURNER -> GVL : Write Food_Plated = Food_Plated + 1
+@enduml
